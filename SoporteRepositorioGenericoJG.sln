@@ -7,18 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoporteRepositorioGenericoJ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoporteRepositorioGenericoPruebas", "SoporteRepositorioGenericoPruebas\SoporteRepositorioGenericoPruebas.csproj", "{AF07542B-A3D1-4142-BD0A-4696236237E8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitBook", "GitBook", "{253CB2FB-9B87-4B5E-A8DB-D12F10D1A9DC}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ES", "ES", "{B4B1B22B-7BA9-4FB5-8D21-C4A5ED5161ED}"
-	ProjectSection(SolutionItems) = preProject
-		GitBook\ES\README.md = GitBook\ES\README.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EN", "EN", "{81625E2A-803A-4DBE-B918-D05E06FBB8B9}"
-	ProjectSection(SolutionItems) = preProject
-		GitBook\EN\README.md = GitBook\EN\README.md
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,10 +24,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{B4B1B22B-7BA9-4FB5-8D21-C4A5ED5161ED} = {253CB2FB-9B87-4B5E-A8DB-D12F10D1A9DC}
-		{81625E2A-803A-4DBE-B918-D05E06FBB8B9} = {253CB2FB-9B87-4B5E-A8DB-D12F10D1A9DC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16807545-8199-49DE-94EF-D22B56044A3D}
