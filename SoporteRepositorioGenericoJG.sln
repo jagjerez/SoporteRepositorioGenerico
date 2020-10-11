@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoporteRepositorioGenericoJG", "SoporteRepositorioGenericoJG\SoporteRepositorioGenericoJG.csproj", "{2F942E46-833D-4958-86FE-908C79280637}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoporteRepositorioGenericoPruebas", "SoporteRepositorioGenericoPruebas\SoporteRepositorioGenericoPruebas.csproj", "{AF07542B-A3D1-4142-BD0A-4696236237E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F942E46-833D-4958-86FE-908C79280637}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F942E46-833D-4958-86FE-908C79280637}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F942E46-833D-4958-86FE-908C79280637}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F942E46-833D-4958-86FE-908C79280637}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF07542B-A3D1-4142-BD0A-4696236237E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF07542B-A3D1-4142-BD0A-4696236237E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF07542B-A3D1-4142-BD0A-4696236237E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF07542B-A3D1-4142-BD0A-4696236237E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16807545-8199-49DE-94EF-D22B56044A3D}
+	EndGlobalSection
+EndGlobal
