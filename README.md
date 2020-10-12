@@ -1,21 +1,21 @@
-# Generic Repository .Net Core
+# Repositorio Generico .Net Core
 
 ![](.gitbook/assets/repositorios-genericos-1-.png)
 
-A generic repository is nothing more than the definition of a repository where there are basic search, update, create and delete operations of a model specified by some generic type defined in the class.
+Un repositorio generico no es más que la definicion de un repositorio donde existen operaciones basicas de busqueda, actualizacion, creacion y eliminacion de un modelo especificado por algun tipo generico definido en la clase.
 
-## Why should it be generic?
+## ¿Porque debe ser generico?
 
-There are many scenarios where repositories are more than copies of itself repeating code many times, for that reason the idea has been created that a single repository is generated where it can be used with all existing models.
+Existen muchos escenarios donde los repositorios son mas que copias de si mismo repitiendo muchas veces las operaciones, por eso se ha creado la idea de que se genere un solo repositorio donde este se pueda usar con todos los modelos existentes.
 
-## Advantages of using generic repositories?
+## ¿Ventajas de usar repositorios genericos?
 
-The advantages of using generic repositories are several but I will name the most important ones.
+Las ventajas de usar repositorios genericos son varias pero nombrare las mas importantes.
 
-1. Do not repeat code.
-2. Separate the context of the database from the business logic and if the database changes, this does not affect the business logic.
+1. No repetir codigo.
+2. Separar el contexto de la base de datos de la logica de negocio y sí se llegase a cambiar de base de datos esto no afecte a la logica de negocio.
 
-## Disadvantages of using generic repositories?
+## ¿Desventajas de usar repositorios genericos?
 
-1. If you need a repository with more specific functions, you must implement a different repository or you must modify the generic repository.
+1. Si necesitas un repositorio con funciones mas especificas deberas implementar un repositorio diferente o deberas modificar el repositorio generico.
 
