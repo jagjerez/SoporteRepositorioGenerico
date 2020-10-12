@@ -15,4 +15,4 @@ Las ventajas de usar repositorios genericos son varias pero nombrare las mas imp
 
 ### ¿Desventajas de usar repositorios genericos?
 
-1. 
+1. Si necesitas un repositorio con funciones mas especificas deberas implementar un repositorio diferente o deberas modificar el repositorio generico.
