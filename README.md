@@ -1,4 +1,4 @@
-# Repositorio Generico .Net Core
+# ¿Que es un Repositorio Generico?
 
 Un repositorio generico no es más que la definicion de un repositorio donde existen operaciones basicas de busqueda, actualizacion, creacion y eliminacion de un modelo especificado por algun tipo generico definido en la clase.
 
@@ -15,7 +15,4 @@ Las ventajas de usar repositorios genericos son varias pero nombrare las mas imp
 
 ### ¿Desventajas de usar repositorios genericos?
 
-1. Si necesitas un repositorio con funciones mas especificas deberas implementar un repositorio diferente o deberas modificar el repositorio generico.
-
-
-
+1. 
