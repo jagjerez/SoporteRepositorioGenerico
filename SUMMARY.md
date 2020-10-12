@@ -1,4 +1,4 @@
 # Table of contents
 
-* [Repositorio Generico .Net Core](README.md)
+* [Generic Repository .Net Core](README.md)
 
