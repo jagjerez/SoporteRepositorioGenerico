@@ -1,4 +1,4 @@
-# ¿Que es un Repositorio Generico?
+# Repositorio Generico .Net Core
 
 Un repositorio generico no es más que la definicion de un repositorio donde existen operaciones basicas de busqueda, actualizacion, creacion y eliminacion de un modelo especificado por algun tipo generico definido en la clase.
 
