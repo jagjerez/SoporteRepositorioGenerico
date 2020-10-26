@@ -13,7 +13,7 @@ namespace SoporteRepositorioGenericoPruebas.Dependecias.Configuraciones
         {
             servicios.AddSingleton<IConfiguration>(CreacionConfiguracion.Inyectar());
             //servicios.AddAutoMapper(typeof(DependencyInjector));
-            BDConsiguracion.Inyectar(servicios);
+            //BDConsiguracion.Inyectar(servicios);
             Dominio.Inyectar(servicios);
             LoggerModuloInyeccion.Inyectar(servicios);
         }

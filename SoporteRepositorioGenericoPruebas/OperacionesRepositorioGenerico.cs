@@ -3,6 +3,7 @@ using NUnit.Framework;
 using SoporteRepositorioGenericoJG;
 using SoporteRepositorioGenericoPruebas.DB.DAO;
 using SoporteRepositorioGenericoPruebas.Dependecias;
+using SoporteRepositorioGenericoPruebas.Unidades_de_Trabajo.Interfaces;
 using System;
 using System.Linq;
 
@@ -10,14 +11,14 @@ namespace SoporteRepositorioGenericoPruebas
 {
     public class OperacionesRepositorioGenerico
     {
-        IRepositorioGenerico<pruebaDao> pruebaRepository;
+        IPruebaUnitOfWork pruebaUnidadTrabajo;
         bool esperar = true;
         [SetUp]
         public void Setup()
         {
             IServiceProvider service = DependencyInjector.GetServiceProvider();
-            pruebaRepository = service.GetService<IRepositorioGenerico<pruebaDao>>();
-            pruebaRepository.NotificacionCambioEntidad += PruebaRepository_NotificacionCambioEntidad;
+            pruebaUnidadTrabajo = service.GetService<IPruebaUnitOfWork>();
+            pruebaUnidadTrabajo.NotificacionCambioEntidad += PruebaRepository_NotificacionCambioEntidad;
 
         }
         /// <summary>
@@ -26,7 +27,7 @@ namespace SoporteRepositorioGenericoPruebas
         /// <param name="e"></param>
         private void PruebaRepository_NotificacionCambioEntidad(SoporteRepositorioGenericoJG.Eventos.NotificacionCambiosEventArgs e)
         {
-            Assert.IsTrue(!(e.tiposCambio == SoporteRepositorioGenericoJG.Enums.TipoCambiosEntidad.none));
+            Assert.IsTrue(e.EntidadesCambiadas.Count > 0);
             esperar = false;
         }
         /// <summary>
@@ -35,7 +36,7 @@ namespace SoporteRepositorioGenericoPruebas
         [Test]
         public void ObtenerTodosDatos()
         {
-            var prueba =  pruebaRepository.ObtenerTodo().ToList();
+            var prueba =  pruebaUnidadTrabajo.RepositorioGenerico.ObtenerTodo();
             Assert.IsNotNull(prueba);
         }
         /// <summary>
@@ -45,8 +46,8 @@ namespace SoporteRepositorioGenericoPruebas
         public void GuardarConEvento()
         {
             esperar = true;
-            pruebaRepository.Anadir(new pruebaDao() { valor = "sexo" });
-            pruebaRepository.Guardar();
+            pruebaUnidadTrabajo.RepositorioGenerico.Anadir(new pruebaDao() { valor = "sexo" });
+            pruebaUnidadTrabajo.Save();
             while (esperar) { }
         }
 

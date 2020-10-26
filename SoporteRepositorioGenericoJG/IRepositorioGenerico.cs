@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SoporteRepositorioGenericoJG
 {
-    public interface IRepositorioGenerico<TEntidad>: ISoporteNotificacionCambioEntidad where TEntidad : class
+    public interface IRepositorioGenerico<TEntidad> where TEntidad : class
     {
 
         IEnumerable<TEntidad> ObtenerTodo();
@@ -22,9 +22,6 @@ namespace SoporteRepositorioGenericoJG
 
         void Borrar(object pId);
 
-        void Guardar();
-
-
         IEnumerable<TEntidad> ObtenerConFiltroMedianteExpresion(
                     Expression<Func<TEntidad, bool>> pExpresionFiltro = null,
                     Func<IQueryable<TEntidad>, IOrderedQueryable<TEntidad>> pExpresionOrden = null,
@@ -36,7 +33,7 @@ namespace SoporteRepositorioGenericoJG
         IQueryable<TEntidad> ObtenerConFiltroMedianteSQL(string pConsulta,
                     params object[] pParametros);
     }
-    public interface IRepositorioGenerico: ISoporteNotificacionCambioEntidad
+    public interface IRepositorioGenerico
     {
         IEnumerable<object> ObtenerTodo();
 
@@ -50,8 +47,6 @@ namespace SoporteRepositorioGenericoJG
 
         void BorrarPorClave(object pId);
         void EjecutarComandoSQL(ConsultaEntidad pConsultaEntidad);
-
-        void Guardar();
 
         IEnumerable<object> ObtenerPorFiltroMedianteSQL(ConsultaEntidad pConsultaEntidad);
     }

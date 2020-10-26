@@ -15,25 +15,11 @@ namespace SoporteRepositorioGenericoJG
     {
         protected DbSet<TEntidad> entidad = null;
         protected DbContext contexto = null;
-        protected NotificacionCambiosEventArgs evento;
 
-        public event NotificacionCambioEntidadManejador NotificacionCambioEntidad;
-
-        private void OnNotificacionCambioEntidad(NotificacionCambiosEventArgs e)
+        public RepositorioGenerico(DbSet<TEntidad> pEntidad,DbContext pContexto)
         {
-            NotificacionCambioEntidadManejador notificacionCambioEntidadManejador = NotificacionCambioEntidad;
-            if(notificacionCambioEntidadManejador != null)
-            {
-                notificacionCambioEntidadManejador?.Invoke(e);
-            }
-        }
-
-        public RepositorioGenerico(DbContext pContexto)
-        {
+            entidad = pEntidad;
             contexto = pContexto;
-            entidad = contexto.Set<TEntidad>();
-            evento = new NotificacionCambiosEventArgs();
-            evento.tiposCambio = Enums.TipoCambiosEntidad.none;
         }
 
         public virtual IEnumerable<TEntidad> ObtenerTodo()
@@ -41,7 +27,7 @@ namespace SoporteRepositorioGenericoJG
             IEnumerable<TEntidad> datos = null;
             try
             {
-                datos = entidad.AsEnumerable();
+                datos = entidad.ToList();
                 return datos;
             }
             catch (Exception)
@@ -75,7 +61,7 @@ namespace SoporteRepositorioGenericoJG
             try
             {
                 entidad.Add(pElementoEntidad);
-                evento.tiposCambio = Enums.TipoCambiosEntidad.alta;
+                
             }
             catch (Exception)
             {
@@ -91,7 +77,7 @@ namespace SoporteRepositorioGenericoJG
             {
                 entidad.Attach(pElementoEntidad);
                 contexto.Entry(pElementoEntidad).State = EntityState.Modified;
-                evento.tiposCambio = Enums.TipoCambiosEntidad.modificacion;
+                
             }
             catch (Exception)
             {
@@ -111,7 +97,7 @@ namespace SoporteRepositorioGenericoJG
                     entidad.Attach(elemento);
                 }
                 entidad.Remove(elemento);
-                evento.tiposCambio = Enums.TipoCambiosEntidad.baja;
+               
             }
             catch (Exception)
             {
@@ -132,7 +118,7 @@ namespace SoporteRepositorioGenericoJG
                     entidad.Attach(elemento);
                 }
                 entidad.Remove(elemento);
-                evento.tiposCambio = Enums.TipoCambiosEntidad.baja;
+                
             }
             catch (Exception)
             {
@@ -183,21 +169,6 @@ namespace SoporteRepositorioGenericoJG
             return entidad.FromSqlRaw(pConsulta, pParametros);
         }
 
-        public virtual void Guardar()
-        {
-            try
-            {
-
-                contexto.SaveChanges();
-                OnNotificacionCambioEntidad(evento);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-        }
 
     }
 
@@ -208,17 +179,6 @@ namespace SoporteRepositorioGenericoJG
         protected string nombreEntidad;
         protected string nombreTipoEntidad;
         protected Type tipoEntidad;
-        protected NotificacionCambiosEventArgs evento;
-
-        public event NotificacionCambioEntidadManejador NotificacionCambioEntidad;
-        private void OnNotificacionCambioEntidad(NotificacionCambiosEventArgs e)
-        {
-            NotificacionCambioEntidadManejador notificacionCambioEntidadManejador = NotificacionCambioEntidad;
-            if (notificacionCambioEntidadManejador != null)
-            {
-                notificacionCambioEntidadManejador?.Invoke(e);
-            }
-        }
 
         public RepositorioGenerico(DbContext pContexto, string pNombreEntidad)
         {
@@ -227,7 +187,7 @@ namespace SoporteRepositorioGenericoJG
                 this.contexto = pContexto;
 
                 Type tipoDbSet = typeof(DbSet<>);
-                Type tipoEntidad = Type.GetType("Sgb_Infrastructure.DAO." + pNombreEntidad);
+                Type tipoEntidad = Type.GetType(pNombreEntidad);
                 Type tipoDbSetGenerico = tipoDbSet.MakeGenericType(tipoEntidad);          
                 nombreEntidad = pNombreEntidad;
                 nombreTipoEntidad = tipoEntidad.FullName;
@@ -279,7 +239,7 @@ namespace SoporteRepositorioGenericoJG
             try
             {
                 contexto.Add(pElementoEntidad);
-                evento.tiposCambio = Enums.TipoCambiosEntidad.alta;
+               
             }
             catch (Exception ex)
             {
@@ -295,8 +255,7 @@ namespace SoporteRepositorioGenericoJG
             {
                 contexto.Entry(pElementoEntidad).State = EntityState.Modified;
 
-                contexto.SaveChanges();
-                evento.tiposCambio = Enums.TipoCambiosEntidad.modificacion;
+            
             }
             catch (Exception ex)
             {
@@ -316,7 +275,7 @@ namespace SoporteRepositorioGenericoJG
                     contexto.Attach(elemento);
                 }
                 contexto.Remove(elemento);
-                evento.tiposCambio = Enums.TipoCambiosEntidad.baja;
+              
             }
             catch (Exception ex)
             {
@@ -336,7 +295,7 @@ namespace SoporteRepositorioGenericoJG
                     contexto.Attach(elemento);
                 }
                 contexto.Remove(elemento);
-                evento.tiposCambio = Enums.TipoCambiosEntidad.baja;
+                
             }
             catch (Exception ex)
             {
@@ -359,21 +318,6 @@ namespace SoporteRepositorioGenericoJG
             int resultado = contexto.ExecuteNonQueryAsync(pConsultaEntidad.Sql, pConsultaEntidad.Parametros).Result;
         }
 
-
-        public void Guardar()
-        {
-            try
-            {
-                contexto.SaveChanges();
-                OnNotificacionCambioEntidad(evento);
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-
-        }
 
     }
 }
